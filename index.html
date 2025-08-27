@@ -417,6 +417,36 @@ if(img != null){
 
 <style>
 .ads label { display:none; }
+
+/* Toast Notification Styles */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: none;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast.show {
+    display: block;
+}
 </style>
                 </div>
             </div>
@@ -439,7 +469,7 @@ if(img != null){
                             <textarea name="note" placeholder="Thông tin: chiều cao, cân nặng, Số chứng minh thư, ...."></textarea>
                         </p>
                         <p>
-                            <button type="submit">Gửi Đăng Ký</button>
+                            <button type="button" onclick="showToast()">Gửi Đăng Ký</button>
                         </p>
                     </form>
                 </div>
@@ -447,8 +477,8 @@ if(img != null){
                     <b>CÔNG TY CỔ PHẦN DỊCH VỤ BẢO VỆ DUƠNG PHÚC THÀNH</b><br>
                     Địa chỉ: Tiểu Đoài, Xã Tam Giang, Huyện Yên Phong, Tỉnh Bắc Ninh, Việt Nam<br>
                     Điện thoại: 0969086222<br>
-                    Email: info@duongphucthanh.com<br>
-                    Website: <a href="index.html">www.duongphucthanh.com</a><br>
+                    Email: info@duongphucthanh.online<br>
+                    Website: <a href="index.html">www.duongphucthanh.online</a><br>
                 </div>
             </div>
         </div>
@@ -465,6 +495,23 @@ if(img != null){
                 <p>© CÔNG TY CỔ PHẦN DỊCH VỤ BẢO VỆ DUƠNG PHÚC THÀNH</p>
             </div>
         </div>
+        
+        <!-- Toast Notification -->
+        <div id="toast" class="toast">
+            Cảm ơn! Chúng tôi sẽ liên hệ với bạn sớm nhất.
+        </div>
     </b></b></b></div><b style="color:black;"><b style="color:black;"><b style="color:black;">
+
+<script>
+function showToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    
+    // Tự động ẩn toast sau 3 giây
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+</script>
 
 </b></b></b></body></html>
